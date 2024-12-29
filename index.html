@@ -1,23 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .main {
+            padding: 2rem 0;
+        }
+        .main h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .project {
+            background: #fff;
+            margin: 1rem;
+            padding: 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
-
 <body>
-    <h1>Login Form</h1>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form action="/login" method="post">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Login">
-        </form>
+    <header>
+        <h1>My Portfolio</h1>
+    </header>
+    <div class="container">
+        <section class="main">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <h3>Project 1</h3>
+                    <p>Description of project 1.</p>
+                </div>
+                <div class="project">
+                    <h3>Project 2</h3>
+                    <p>Description of project 2.</p>
+                </div>
+                <div class="project">
+                    <h3>Project 3</h3>
+                    <p>Description of project 3.</p>
+                </div>
+            </div>
+        </section>
     </div>
+    <footer>
+        <p>&copy; 2023 My Portfolio</p>
+    </footer>
 </body>
-
 </html>
