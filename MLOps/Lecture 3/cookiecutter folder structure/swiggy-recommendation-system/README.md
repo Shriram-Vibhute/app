@@ -10,7 +10,7 @@ Project Organization
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
     ├── data
-    │   ├── external       <- Data from third party sources. (CIBIL score of user)
+    │   ├── external       <- Data from third party sources. (Credit score of user)
     │   ├── interim        <- Intermediate data that has been transformed. (After feature engineering)
     │   ├── processed      <- The final, canonical data sets for modeling. (Final Data)
     │   └── raw            <- The original, immutable data dump. (Transaction data)
