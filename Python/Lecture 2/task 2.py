@@ -1,11 +1,4 @@
-# `Problem 1`: Write a program that will give you in hand monthly salary after deduction on CTC - HRA(10%), DA(5%), PF(3%) and taxes deduction as below:
-"""
-Salary(Lakhs) : Tax(%)
-*   Below 5 : 0%
-*   5-10 : 10%
-*   10-20 : 20%
-*   above 20 : 30%
-"""
+# Problem 1: Calculate in-hand monthly salary after deductions (HRA, DA, PF, and taxes)
 salary = int(input("Enter your salary : "))
 # HRA, DA, PF deduction
 salary -= ((0.1 * salary) + (0.05 * salary) + (0.03 * salary))
@@ -19,27 +12,20 @@ else:
 
 print("Your in-hand salary : ", salary)
 
-# `Problem 2`: Write a program that take a user input of three angles and will find out whether it can form a triangle or not.
+# Problem 2: Check if three angles can form a triangle
 angles = [float(input("Enter angle: ")) for _ in range(3)]
 if angles[0] + angles[1] + angles[2] == 180:
     print("Triangle")
 else:
     print("Not a triangle")
 
-# `Problem 3`: Write a program that will take user input of cost price and selling price and determines whether its a loss or a profit.
+# Problem 3: Determine profit or loss based on cost price and selling price
 cost_price = int(input("Cost Price : "))
 selling_price = int(input("Selling Price : "))
 
 print("Profit" if selling_price - cost_price > 0 else "loss")
 
-# `Problem 4`: Write a menu-driven program -
-"""
-1. cm to ft
-2. km to miles
-3. USD to INR
-4. exit
-"""
-
+# Problem 4: Menu-driven program for unit conversions
 choice = int(input(
     """
     Enter your choice
@@ -62,18 +48,17 @@ elif choice == 3:
 else:
     print("exit")
 
-# `Problem 5` - Exercise 12: Display Fibonacci series up to 10 terms - Lets use recursion to solve this problem
+# Problem 5: Display Fibonacci series up to 10 terms using recursion
 def fibonacci(n: int):
-    if(n == 0):
+    if n == 0:
         return 0
-    if(n == 1):
+    if n == 1:
         return 1
-    
     return fibonacci(n - 1) + fibonacci(n - 2)
 
 print(fibonacci(10))
 
-# `Problem 6` - Find the factorial of a given number using recursion
+# Problem 6: Find the factorial of a given number using recursion
 num = int(input("Enter the number : "))
 def factorial(num: int):
     if num == 1 or num == 0:
@@ -82,122 +67,93 @@ def factorial(num: int):
 
 print(factorial(num))
 
-# `Problem 7` - Reverse a given integer number.
+# Problem 7: Reverse a given integer number
 num = int(input("Enter your number : "))
 print(int(str(num)[::-1]))
 
-"""### `Problem 8`: Take a user input as integer N. Find out the sum from 1 to N. If any number if divisible by 5, then skip that number. And if the sum is greater than 300, don't need to calculate the sum further more. Print the final result. And don't use for loop to solve this problem.
+# Problem 8: Calculate the sum from 1 to N, skipping multiples of 5 and stopping if the sum exceeds 300
+def sum_skip_5(n, current_sum=0):
+    if n == 0 or current_sum > 300:
+        return current_sum
+    if n % 5 == 0:
+        return sum_skip_5(n - 1, current_sum)
+    return sum_skip_5(n - 1, current_sum + n)
 
-**Example 1:**
+N = int(input("Enter an integer N: "))
+result = sum_skip_5(N)
+print(result)
 
-`Input:`
-
-```bash
-30
-```
-
-`Output:`
-
-```bash
-276
-```
-"""
-
-# Write code here
-
-# `Problem 10`: Write a program, which will find all such numbers between 1000 and 3000 (both included) such that each digit of the number is an even number. The numbers obtained should be printed in a space-separated sequence on a single line.
-
+# Problem 10: Find numbers between 1000 and 3000 where each digit is even
 for i in range(1000, 3001):
-    # Fetching all the digits from current number
     curr_num = i
     status = True
     while curr_num != 0:
         digit = int(curr_num % 10)
-        if(digit % 2 != 0): 
+        if digit % 2 != 0: 
             status = False
             break
-        curr_num /= 10
-    if(status): print(i)
+        curr_num //= 10
+    if status: 
+        print(i)
 
-"""###`Problem 11`: A robot moves in a plane starting from the original point (0,0). The robot can move toward UP, DOWN, LEFT and RIGHT with a given steps.
-The trace of robot movement is shown as the following:
-```
-UP 5
-DOWN 3
-LEFT 3
-RIGHT 2
-!
-```
-> The numbers after the direction are steps.
+# Problem 11: Calculate the distance from the origin after a sequence of movements
+user_input = [5, 3, 3, 2, 0]
+final_x, final_y = 0, 0
+for i in range(len(user_input)):
+    if i == 0:
+        final_y += i
+    elif i == 1:
+        final_y -= i
+    elif i == 2:
+        final_x -= i
+    else:
+        final_x += i
 
-> `!` means robot stop there.
+distance = (final_x ** 2 + final_y ** 2) ** 0.5
+print(distance)
 
-**Please write a program to compute the distance from current position after a sequence of movement and original point.**
+# Problem 12: Check if a given number is a prime number
+num = int(input("Enter a number: "))
 
-*If the distance is a float, then just print the nearest integer.*
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
-Example:
+if is_prime(num):
+    print(f"{num} is a prime number")
+else:
+    print(f"{num} is not a prime number")
 
-`Input`:
-```
-UP 5
-DOWN 3
-LEFT 3
-RIGHT 2
-!
-```
-`Output`:
-```
-2
-```
-"""
+# Problem 13: Print all Armstrong numbers in a given range
+for i in range(int(input("Enter the range : ")) + 1):
+    current_num = i
+    final_sum = 0
+    while current_num != 0:
+        final_sum += ((current_num % 10) ** 3)
+        current_num //= 10
+    if final_sum == i:
+        print(i)
 
-# Write code here
+# Problem 14: Calculate the angle between the hour hand and minute hand
+H = int(input("Enter the hour : "))
+M = int(input("Enter the minute : "))
+hour_hand_position = 0.5 * M
+minute_hand_position = 6 * M
+angle = abs(hour_hand_position - minute_hand_position)
+print(int(min(360 - angle, angle)))
 
-"""###`Problem 12`:Write a program to print whether a given number is a prime number or not"""
+# Problem 15: Check if two rectangles overlap
+LT1 = [int(input("Enter the x coordinate of the left top corner of the first rectangle : ")), int(input("Enter the y coordinate of the left top corner of the first rectangle : "))]
+RB1 = [int(input("Enter the x coordinate of the right bottom corner of the first rectangle : ")), int(input("Enter the y coordinate of the right bottom corner of the first rectangle : "))]
 
-# Write code here
+LT2 = [int(input("Enter the x coordinate of the left top corner of the second rectangle : ")), int(input("Enter the y coordinate of the left top corner of the second rectangle : "))]
+RB2 = [int(input("Enter the x coordinate of the right bottom corner of the second rectangle : ")), int(input("Enter the y coordinate of the right bottom corner of the second rectangle : "))]
 
-"""###`Problem 13`:Print all the Armstrong numbers in a given range.
-Range will be provided by the user<br>
-Armstrong number is a number that is equal to the sum of cubes of its digits. For example 0, 1, 153, 370, 371 and 407 are the Armstrong numbers.
-"""
-
-# Write code here
-
-"""###`Problem 14`:Calculate the angle between the hour hand and minute hand.
-
-Note: There can be two angles between hands; we need to print a minimum of two. Also, we need to print the floor of the final result angle. For example, if the final angle is 10.61, we need to print 10.
-
-Input:<br>
-H = 9 , M = 0<br>
-Output:<br>
-90<br>
-Explanation:<br>
-The minimum angle between hour and minute
-hand when the time is 9 is 90 degress.
-"""
-
-# Write code here
-
-"""###`Problem 15`:Given two rectangles, find if the given two rectangles overlap or not. A rectangle is denoted by providing the x and y coordinates of two points: the left top corner and the right bottom corner of the rectangle. Two rectangles sharing a side are considered overlapping. (L1 and R1 are the extreme points of the first rectangle and L2 and R2 are the extreme points of the second rectangle).
-
-Note: It may be assumed that the rectangles are parallel to the coordinate axis.
-
-<img src='https://www.geeksforgeeks.org/wp-content/uploads/rectanglesOverlap.png' width='300' height='200'>
-"""
-
-# input of 1st rectangle
-x_lt_1 = int(input())
-y_lt_1 = int(input())
-x_rb_1 = int(input())
-y_rb_1 = int(input())
-
-x_lt_2 = int(input())
-y_lt_2 = int(input())
-x_rb_2 = int(input())
-y_rb_2 = int(input())
-
-# Checking right
-if(x_rb_1 > x_rb_2 and y_rb_1 < y_rb_2): print("Overlap")
-elif(x_rb_1 > x_rb_2 and y_rb_1 < y_rb_2): print("Overlap")
+if (LT1[0] < RB2[0] or LT2[0] < RB1[0]) and (LT1[1] > RB2[1] or LT2[1] > RB1[1]):
+    print("Overlap")
+else:
+    print("No Overlap")
